@@ -1,0 +1,66 @@
+version: "3"
+
+# By default, itzg/minecraft-server will run the selected minecraft server with
+# the specified data as the 'minecraft' user, not as root. This improves
+# security.
+
+# Followed README at
+# https://github.com/itzg/docker-minecraft-server
+
+######## Interacting with the server
+# Read https://github.com/itzg/docker-minecraft-server#interacting-with-the-server
+# for how to send commands to the server
+#
+# Try:
+# docker exec -i minecraft_docker_server-mc-1 mc-send-to-console  say hi
+# docker attach minecraft_docker_server-mc-1 
+# 
+# minecraft_docker_server-mc-1  is the container name, which may be different
+# Get the name with: docker container ls
+services:
+  mc:
+    # Specify which Docker image to run.
+    #
+    # A running Docker image is called a Docker container.
+    # 
+    # The part after the last colon is called a tag and it specifies the
+    # image's version. In this case, we're using the java17 tag, which is based
+    # on Ubuntu.
+    image: itzg/minecraft-server:java17
+    ports:
+      # Expose ports
+      - 25565:25565 # Minecraft server port.
+      - 25575:25575 # RCON port. Do not expose to the internet.
+      - 8123:8123 # Dynmap port. WARNING: REMOVE THIS LINE IF DYNMAP IS NOT INSTALLED.
+    environment:
+      # Did you read the EULA? Of course.
+      EULA: "TRUE"
+      # Run a paper server for performance.
+      # Paper comes with spigot installed.
+      TYPE: "PAPER"
+      VERSION: "1.18.1"
+      # More efficient garbage collection for better performance
+      USE_AIKAR_FLAGS: "true"
+      # Set RAM
+      MEMORY: "6G"
+      # Server settings
+      DIFFICULTY: "hard"
+      MAX_PLAYERS: "50"
+      VIEW_DISTANCE: "20"
+      # Set the level name
+      # Copy it into the ./data directory
+      # It will move your nether and end into new folders because of how Paper works
+      LEVEL: "TestLevel"
+    tty: true
+    stdin_open: true
+    # Always restart the container if it stops, unless it was stopped "manually
+    # or otherwise"
+    restart: unless-stopped
+    volumes:
+      # Link the local data directory (in the current directory "./")
+      # to /data (at the root of the container filesystem) inside the container
+      #
+      # BACKUP WARNING:
+      # Make sure you're making backups of this directory!
+      # Make sure the backup path in run.sh matches this.
+      - ./test_server_data:/data
