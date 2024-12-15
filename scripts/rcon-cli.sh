@@ -1,22 +1,23 @@
 #!/bin/sh
 # Make sure the docker container name is correct by checking
 # `docker container ls`
-DEFAULT_DOCKER_CONTAINER_NAME=minecraft_docker_server-mc-1 
+DEFAULT_DOCKER_CONTAINER_NAME=minecraft-server-mc-1
 
 # Read the docker container name from an environment variable, or use the default.
 DOCKER_CONTAINER_NAME="${DOCKER_CONTAINER_NAME-$DEFAULT_DOCKER_CONTAINER_NAME}"
 
 # Starts the rcon command line interface for sending commands to the server
 if [ $# -ne 1 ] || [ "$1" = "-h" ]; then
-  echo "USAGE: $0 RCON-PASSWORD-FILE"
+  echo "USAGE: $0 SERVER-PROPERTIES-FILE"
   echo
-  echo "Do not write the password, instead store it in a protected file"
   echo "   Example:"
-  echo "   $0 ~/encrypted/rcon-password"
+  echo "   $0 server/server.properties"
   exit 0
 fi
 
-RCON_PASSWORD="$(cat "$1")"
+# RCON_PASSWORD="$(cat "$1")"
+RCON_PASSWORD="$(cat "$1" | grep rcon.password | sed 's/.*=//')"
+echo $RCON_PASSWORD
 
 echo "WARNING: this will run rcon as root in the docker container"
 echo "         DO NOT EXPOSE rcon TO THE INTERNET"
