@@ -10,4 +10,4 @@ ROOT="$(dirname $0)"
 
 # Use docker compose to build the container and then run it.
 # `mc` is the service name in the docker-compose.yml file
-docker-compose up --build
+docker compose up --build
