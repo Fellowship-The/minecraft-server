@@ -7,7 +7,7 @@ DEFAULT_DOCKER_CONTAINER_NAME=minecraft-server-mc-1
 DOCKER_CONTAINER_NAME="${DOCKER_CONTAINER_NAME-$DEFAULT_DOCKER_CONTAINER_NAME}"
 
 # Starts the rcon command line interface for sending commands to the server
-if [ $# -ne 1 ] || [ "$1" = "-h" ]; then
+if [ $# -gt 1 ] || [ "$1" = "-h" ]; then
   echo "USAGE: $0 SERVER-PROPERTIES-FILE"
   echo
   echo "   Example:"
@@ -16,8 +16,10 @@ if [ $# -ne 1 ] || [ "$1" = "-h" ]; then
 fi
 
 # RCON_PASSWORD="$(cat "$1")"
-RCON_PASSWORD="$(cat "$1" | grep rcon.password | sed 's/.*=//')"
-echo $RCON_PASSWORD
+PARENT="$(realpath "$(dirname "$0")"/../)"
+CONF="${1:-"$PARENT"/test_server_data/server.properties}"
+echo $CONF
+RCON_PASSWORD="$(cat "$CONF" | grep rcon.password | sed 's/.*=//')"
 
 echo "WARNING: this will run rcon as root in the docker container"
 echo "         DO NOT EXPOSE rcon TO THE INTERNET"
