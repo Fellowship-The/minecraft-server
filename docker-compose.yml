@@ -37,6 +37,24 @@ services:
       # - 8123:8123 # Dynmap port. WARNING: REMOVE THIS LINE IF DYNMAP IS NOT INSTALLED.
       # squaremap port 8080
       - 8080:8080
+
+    ####### Security settings
+    security_opt:
+      - no-new-privileges:true
+      - apparmor:docker-default
+    # cap_drop:
+    #   - all
+    # cap_add:
+    #   - NET_RAW
+    privileged: false
+
+    deploy:
+      # check with `docker stats`
+      resources:
+        reservations:
+          cpus: 4
+          memory: 12G
+
     environment:
       # Did you read the EULA? Of course.
       EULA: "TRUE"
@@ -76,6 +94,12 @@ services:
       DIFFICULTY: "hard"
       MAX_PLAYERS: "7"
       VIEW_DISTANCE: "20"
+
+      # TODO keep this off github
+      # administrator player list
+      OPS: |
+        truefelina
+
       # Set the level name
       # Copy it into the ./data directory
       # It will move your nether and end into new folders because of how Paper works
