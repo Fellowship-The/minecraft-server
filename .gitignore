@@ -1,3 +1,4 @@
+backup/*
 *.tar.lrz
 # Only add the server.properties from your data/ directories
 *_server_data/
