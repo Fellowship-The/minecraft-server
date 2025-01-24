@@ -67,3 +67,7 @@ If that's still too slow, use docker to just setup the server and then run the s
 | `./scripts/rcon-cli.sh` | Start an RCON shell to send commands to the server |
 | `./scripts/list-containers.sh` | Simply lists all running docker containers with `docker container ls`. You can use this to verify the server is running and healthy. |
 
+
+## Useful tools
+
+[read here](./useful_tools.md)

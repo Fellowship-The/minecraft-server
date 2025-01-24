@@ -1,0 +1,49 @@
+* T580 "another"
+- 8 core cpu released Q4 2017: Intel Core i7-8650U @ 8x 4.2GHz [33.0°C]
+- max turbo frequency: 4.20GHz
+
+* X1 "festina-lente"
+- 20 core cpu released Q2 2023: 13th Gen Intel Core i7-1370P @ 20x 5GHz [71.0°C]
+- max turbo frequency: 4.20GHz
+
+- review result compared to T580:
+  "hugely faster" see https://cpu.userbenchmark.com/Compare/Intel-Core-i7-8650U-vs-Intel-Core-i7-1370P/m353957vsm2086746
+
+* Rockchip RK3328
+- 4 core cpu launched around 2012 Quad-core ARMCortex-A53 CPU up to 1.5GHz
+  - ARM minecraft server?
+  - ARM playit tunnel?
+- 1GB or 2GB RAM
+  - too low!
+
+https://libre.computer/
+
+
+
+reddit recommends odroid h2 for minecraft servers<M-Escape>
+odroid h4 is the latest, it is an x86 computer with an intel i3
+
+
+
+* internet at 7918
+** ethernet from living room:
+- double the speed
+- consistent 35ms ping
+- T580 bad+old wifi chip
+
+** wifi from my room: 51ms ping to 35ms... 16MBps to 40MBps
+with lag spike of 180ms!!!!!!
+
+Dec 16 16:05-07:00  v23.3.0                                                                  
+~ $ speedtest-cli
+Testing download speed................................................................................
+Download: 16.87 Mbit/s
+Testing upload speed......................................................................................................
+Upload: 5.65 Mbit/s
+Dec 16 16:06-07:00  v23.3.0                                                              28s 
+~ $ speedtest-cli
+Testing download speed................................................................................
+Download: 37.43 Mbit/s
+Testing upload speed......................................................................................................
+Upload: 17.43 Mbit/s
+
