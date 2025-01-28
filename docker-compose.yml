@@ -100,8 +100,7 @@ services:
 
       # TODO keep this off github
       # administrator player list
-      OPS: |
-        truefelina
+      OPS: ${OPS_LIST}
 
       # Set the level name
       # Copy it into the ./data directory

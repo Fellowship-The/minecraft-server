@@ -12,4 +12,6 @@ set -x
 
 # Use docker compose to build the container and then run it.
 # `mc` is the service name in the docker-compose.yml file
-docker compose -f $ROOT/docker-compose.yml up --build
+set -a
+source "$ROOT/private.env"
+docker compose -f $ROOT/docker-compose.yml up --build 
