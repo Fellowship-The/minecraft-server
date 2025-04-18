@@ -55,6 +55,20 @@ services:
           cpus: 4
           memory: 12G
 
+    tty: true
+    stdin_open: true
+    # Always restart the container if it stops, unless it was stopped "manually
+    # or otherwise"
+    restart: unless-stopped
+    volumes:
+      # Link the local data directory (in the current directory "./")
+      # to /data (at the root of the container filesystem) inside the container
+      #
+      # BACKUP WARNING:
+      # Make sure you're making backups of this directory!
+      # Make sure the backup path in run.sh matches this.
+      - ./test_server_data:/data
+
     environment:
       # Did you read the EULA? Of course.
       EULA: "TRUE"
@@ -63,7 +77,7 @@ services:
       # shipittttttt
       PAPER_CHANNEL: experimental
       TYPE: "PAPER"
-      VERSION: "1.21.4"
+      VERSION: "1.21.5"
       # More efficient garbage collection for better performance
       #  Flags from aikar's flag generator https://docs.papermc.io/misc/tools/start-script-gen
       USE_AIKAR_FLAGS: "true"
@@ -105,20 +119,8 @@ services:
       # Set the level name
       # Copy it into the ./data directory
       # It will move your nether and end into new folders because of how Paper works
-      # LEVEL: "catland"
       # LEVEL: "TestLevel"
+      # snow
+      # LEVEL: "catland"
+      # desert
       LEVEL: "MY DUNE 2"
-    tty: true
-    stdin_open: true
-    # Always restart the container if it stops, unless it was stopped "manually
-    # or otherwise"
-    restart: unless-stopped
-    volumes:
-      # Link the local data directory (in the current directory "./")
-      # to /data (at the root of the container filesystem) inside the container
-      #
-      # BACKUP WARNING:
-      # Make sure you're making backups of this directory!
-      # Make sure the backup path in run.sh matches this.
-      - ./test_server_data:/data
-      ######## - ./1_18_HUGOLAND_server_data:/data
