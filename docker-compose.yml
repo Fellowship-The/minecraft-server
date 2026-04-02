@@ -67,7 +67,8 @@ services:
       # BACKUP WARNING:
       # Make sure you're making backups of this directory!
       # Make sure the backup path in run.sh matches this.
-      - ./test_server_data:/data
+      # - ./test_server_data:/data
+      - ./IMPERIUS_FELINUS:/data
 
     environment:
       # Did you read the EULA? Of course.
@@ -75,9 +76,9 @@ services:
       # Run a paper server for performance.
       # Paper comes with spigot installed.
       # shipittttttt
-      PAPER_CHANNEL: experimental
+      PAPER_CHANNEL: default
       TYPE: "PAPER"
-      VERSION: "1.21.5"
+      VERSION: "1.21.4"
       # More efficient garbage collection for better performance
       #  Flags from aikar's flag generator https://docs.papermc.io/misc/tools/start-script-gen
       USE_AIKAR_FLAGS: "true"
@@ -123,4 +124,5 @@ services:
       # snow
       # LEVEL: "catland"
       # desert
-      LEVEL: "MY DUNE 2"
+      # LEVEL: "MY DUNE 2"
+      # LEVEL: "IMPERIUS_FELINUS"
