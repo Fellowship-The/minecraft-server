@@ -52,8 +52,8 @@ services:
       # check with `docker stats`
       resources:
         reservations:
-          cpus: 4
-          memory: 12G
+          cpus: 8
+          memory: 20G
 
     tty: true
     stdin_open: true
@@ -80,8 +80,13 @@ services:
       # TYPE: "PAPER"
       # VERSION: "1.21.4"
       # VERSION: "1.21.11"
-      TYPE: "VANILLA"
+
+      # TYPE: "VANILLA"
       # VERSION: "26.1.1"
+
+      TYPE: SPIGOT
+      VERSION: 26.1
+
       # More efficient garbage collection for better performance
       #  Flags from aikar's flag generator https://docs.papermc.io/misc/tools/start-script-gen
       USE_AIKAR_FLAGS: "true"
@@ -110,7 +115,7 @@ services:
       ## ,Uw9c10,2e96zb
 
       # Set RAM
-      MEMORY: "10G"
+      MEMORY: "20G"
       # Server settings
       DIFFICULTY: "hard"
       MAX_PLAYERS: "17"
