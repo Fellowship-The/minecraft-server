@@ -2,13 +2,8 @@
 # the specified data as the 'minecraft' user, not as root. This improves
 # security.
 
-# These docs are very clear (2024-12)
-############# DOCS
-############## https://docker-minecraft-server.readthedocs.io/en/latest/
-############# DOCS
-
-# Followed README at
-# https://github.com/itzg/docker-minecraft-server
+##### The official documentation is very thorough:
+##### https://docker-minecraft-server.readthedocs.io/en/latest/
 
 ######## Interacting with the server
 # Read https://github.com/itzg/docker-minecraft-server#interacting-with-the-server
@@ -22,58 +17,33 @@
 # Get the name with: docker container ls
 services:
   mc:
-    # Specify which Docker image to run.
-    #
-    # A running Docker image is called a Docker container.
-    # 
-    # The part after the last colon is called a tag and it specifies the
-    # image's version. In this case, we're using the java17 tag, which is based
-    # on Ubuntu.
     image: itzg/minecraft-server:java25-graalvm
     ports:
       # Expose ports
       - 25565:25565 # Minecraft server port.
       - 25575:25575 # RCON port. Do not expose to the internet.
       # - 8123:8123 # Dynmap port. WARNING: REMOVE THIS LINE IF DYNMAP IS NOT INSTALLED.
-      # squaremap port 8080
-      - 8080:8080
-
     ####### Security settings
     security_opt:
       - no-new-privileges:true
       - apparmor:docker-default
-    # cap_drop:
-    #   - all
-    # cap_add:
-    #   - NET_RAW
     privileged: false
-
     deploy:
-      # check with `docker stats`
       resources:
-        reservations:
+        reservations: # check with `docker stats`
           cpus: 8
           memory: 20G
-
     tty: true
     stdin_open: true
-    # Always restart the container if it stops, unless it was stopped "manually
-    # or otherwise"
+    # Always restart the container if it stops, unless it was stopped "manually or otherwise"
     restart: unless-stopped
     volumes:
-      # Link the local data directory (in the current directory "./")
-      # to /data (at the root of the container filesystem) inside the container
-
       # BACKUP WARNING:
-      # Make sure you're making backups of this directory!
-      # Make sure the backup path in run.sh matches this.
       # - ./IMPERIUS_FELINUS:/data
       - ./modtest1:/data
-
     environment:
       # Did you agree to the contract terms in the EULA? No choice!
       EULA: "TRUE"
-
       # TYPE: "PAPER"
       # VERSION: "1.21.4"
       # VERSION: "1.21.11"
@@ -83,62 +53,46 @@ services:
 
       # TYPE: FORGE
       # VERSION: "26.1.1"  # Find on https://neoforged.net/
-      ####### DO NOT AUTOMATE DOWNLOAD! Forge depends on ad revenue, download the file yourself. FORGE_VERSION: "latest"
+      # DO NOT AUTOMATE DOWNLOAD! Forge depends on ad revenue, download the file yourself. Avoid FORGE_VERSION.
       # FORGE_INSTALLER: "./forge-26.1.1-63.0.1-installer.jar"
-
       VERSION: "26.1"
-
-      # More efficient garbage collection for better performance
-      #  Flags from aikar's flag generator https://docs.papermc.io/misc/tools/start-script-gen
-      USE_AIKAR_FLAGS: "true"
+      USE_AIKAR_FLAGS: "true" # More efficient garbage collection for better performance from aikar's flag generator
       USE_SIMD_FLAGS: "true"
       MAX_TICK_TIME: "-1" # Prevent watchdog killing server
-
       # Install mods using modrinth
-      MODPACK_PLATFORM: "MODRINTH"
-      MODRINTH_MODPACK: https://modrinth.com/modpack/ovop/version/yJNO4kJ1  # 26.1 fabric # Overly Optimized https://modrinth.com/modpack/ovop
-
+      MODPACK_PLATFORM: "MODRINTH"  # Modpacks are simple ways to install groups of mods: https://docker-minecraft-server.readthedocs.io/en/latest/types-and-platforms/mod-platforms/modrinth-modpacks/
+      MODRINTH_MODPACK: https://modrinth.com/modpack/ovop/version/yJNO4kJ1 # ovop with Minecraft 26.1 and Fabric loader, Overly Optimized https://modrinth.com/modpack/ovop
       # Check game version here: https://modrinth.com/modpack/ovop/versions
       # MODRINTH_MODPACK: ovop
       # MODRINTH_MODPACK_VERSION_TYPE: alpha
-
       MODRINTH_PROJECTS: |
-           lithostitched  # dep of tectonic
-           tectonic
+        lithostitched  # dep of tectonic
+        tectonic
 
-           viafabric:alpha # dep of viaversion
-           viaversion  # https://modrinth.com/plugin/viaversion
+        viafabric:alpha # dep of viaversion
+        viaversion  # https://modrinth.com/plugin/viaversion
 
-           collective # dep of starter-kit
-           starter-kit  # https://modrinth.com/mod/starter-kit
+        collective # dep of starter-kit
+        starter-kit  # https://modrinth.com/mod/starter-kit
 
-           # natures-compass  # https://modrinth.com/mod/natures-compass
+        # natures-compass  # https://modrinth.com/mod/natures-compass
 
-           villager-names-serilum  # https://modrinth.com/mod/villager-names-serilum
-           
-           serversleep  # https://modrinth.com/datapack/serversleep
-           
+        villager-names-serilum  # https://modrinth.com/mod/villager-names-serilum
 
+        serversleep  # https://modrinth.com/datapack/serversleep
       ## Optimizers like lithium, ferrite, servercore, etc are installed via modpack
-      ## not compatible 26.1 fabric yet: sophisticated-backpacks  # https://modrinth.com/mod/sophisticated-backpacks
-      ## needs tons of deps veinminer  # https://modrinth.com/datapack/veinminer
-      # gravestone-mod  # https://modrinth.com/mod/gravestone-mod
 
       # Datapacks from vanilla tweaks (comma separated IDs)
       # graves gravestone https://vanillatweaks.net/picker/datapacks/#kSIhW5
       # multiplayer sleep https://vanillatweaks.net/picker/datapacks/#Uw9c10
       # classic fishing loot vanillatweaks.net/share#2e96zb
-      VANILLATWEAKS_SHARECODE: kSIhW5,2e96zb
-      # VANILLATWEAKS_SHARECODE: kSIhW5,Uw9c10,2e96zb
-
-      # Set RAM
+      VANILLATWEAKS_SHARECODE: kSIhW5,2e96zb,Uw9c10
+      # RAM parameters
       MEMORY: "20G"
       INIT_MEMORY: "10G"
-
       # Server settings
       DIFFICULTY: "hard"
       MAX_PLAYERS: "17"
       VIEW_DISTANCE: "15"
-
-      # keep this off github, administrator player list; see private.env
+      # Keep ops list off github, use private.env
       OPS: ${OPS_LIST}
