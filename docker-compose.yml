@@ -38,9 +38,7 @@ services:
     # Always restart the container if it stops, unless it was stopped "manually or otherwise"
     restart: unless-stopped
     volumes:
-      # BACKUP WARNING:
-      # - ./IMPERIUS_FELINUS:/data
-      - ./modtest1:/data
+      - ./IMPERIUS_FELINUS:/data  # Game data. Make sure to regularly backup!
     environment:
       # Did you agree to the contract terms in the EULA? No choice!
       EULA: "TRUE"
@@ -86,13 +84,13 @@ services:
       # graves gravestone https://vanillatweaks.net/picker/datapacks/#kSIhW5
       # multiplayer sleep https://vanillatweaks.net/picker/datapacks/#Uw9c10
       # classic fishing loot vanillatweaks.net/share#2e96zb
-      VANILLATWEAKS_SHARECODE: kSIhW5,2e96zb,Uw9c10
+      VANILLATWEAKS_SHARECODE: kSIhW5,2e96zb
       # RAM parameters
       MEMORY: "20G"
       INIT_MEMORY: "10G"
       # Server settings
       DIFFICULTY: "hard"
       MAX_PLAYERS: "17"
-      VIEW_DISTANCE: "15"
+      VIEW_DISTANCE: "8"
       # Keep ops list off github, use private.env
       OPS: ${OPS_LIST}
