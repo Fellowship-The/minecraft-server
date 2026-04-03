@@ -29,7 +29,7 @@ services:
     # The part after the last colon is called a tag and it specifies the
     # image's version. In this case, we're using the java17 tag, which is based
     # on Ubuntu.
-    image: itzg/minecraft-server:java21-graalvm
+    image: itzg/minecraft-server:java25-graalvm
     ports:
       # Expose ports
       - 25565:25565 # Minecraft server port.
@@ -76,9 +76,12 @@ services:
       # Run a paper server for performance.
       # Paper comes with spigot installed.
       # shipittttttt
-      PAPER_CHANNEL: default
-      TYPE: "PAPER"
-      VERSION: "1.21.4"
+      # PAPER_CHANNEL: default
+      # TYPE: "PAPER"
+      # VERSION: "1.21.4"
+      # VERSION: "1.21.11"
+      TYPE: "VANILLA"
+      # VERSION: "26.1.1"
       # More efficient garbage collection for better performance
       #  Flags from aikar's flag generator https://docs.papermc.io/misc/tools/start-script-gen
       USE_AIKAR_FLAGS: "true"
@@ -110,7 +113,7 @@ services:
       MEMORY: "10G"
       # Server settings
       DIFFICULTY: "hard"
-      MAX_PLAYERS: "7"
+      MAX_PLAYERS: "17"
       VIEW_DISTANCE: "20"
 
       # TODO keep this off github
