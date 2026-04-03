@@ -86,7 +86,7 @@ services:
       ####### DO NOT AUTOMATE DOWNLOAD! Forge depends on ad revenue, download the file yourself. FORGE_VERSION: "latest"
       # FORGE_INSTALLER: "./forge-26.1.1-63.0.1-installer.jar"
 
-      VERSION: "26.1.1"
+      VERSION: "26.1"
 
       # More efficient garbage collection for better performance
       #  Flags from aikar's flag generator https://docs.papermc.io/misc/tools/start-script-gen
@@ -94,37 +94,35 @@ services:
       USE_SIMD_FLAGS: "true"
       MAX_TICK_TIME: "-1" # Prevent watchdog killing server
 
-      # Install mods from spiget
-      # https://www.spigotmc.org/resources/
-      # https://www.spigotmc.org/resources/gravesx.118271/
-      # use the ID after the . example 118271 for the gravesx mod
-      # SPIGET_RESOURCES: ""
-
-      # Install mods from modrinth (forge frontend)
-      #   https://modrinth.com/modpack/sop   problem: modpack, not mod
+      # Install mods using modrinth
       MODPACK_PLATFORM: "MODRINTH"
-      MODRINTH_MODPACK: ovop  # Overly Optimized https://modrinth.com/modpack/ovop
-      MODRINTH_MODPACK_VERSION_TYPE: beta
-      ## REMOVE_OLD_MODS: "true"
-      MODS: "./funmods"
+      MODRINTH_MODPACK: https://modrinth.com/modpack/ovop/version/yJNO4kJ1  # 26.1 fabric # Overly Optimized https://modrinth.com/modpack/ovop
+
+      # Check game version here: https://modrinth.com/modpack/ovop/versions
+      # MODRINTH_MODPACK: ovop
+      # MODRINTH_MODPACK_VERSION_TYPE: alpha
+
       MODRINTH_PROJECTS: |
-           # tectonic
-           # viaversion  # https://modrinth.com/plugin/viaversion
+           lithostitched  # dep of tectonic
+           tectonic
 
-           # Installed via modpack
-           ### servercore  # https://modrinth.com/mod/servercore
-           ### ferrite-core  # https://modrinth.com/mod/ferrite-core
-           ### lithium  # https://modrinth.com/mod/lithium
+           viafabric:alpha # dep of viaversion
+           viaversion  # https://modrinth.com/plugin/viaversion
 
+           collective # dep of starter-kit
            starter-kit  # https://modrinth.com/mod/starter-kit
-           # veinminer  # https://modrinth.com/datapack/veinminer
-           # gravestone-mod  # https://modrinth.com/mod/gravestone-mod
-           natures-compass  # https://modrinth.com/mod/natures-compass
-           # sophisticated-backpacks  # https://modrinth.com/mod/sophisticated-backpacks
 
-           # villager-names-serilum  # https://modrinth.com/mod/villager-names-serilum
+           # natures-compass  # https://modrinth.com/mod/natures-compass
+
+           villager-names-serilum  # https://modrinth.com/mod/villager-names-serilum
            
-           ## Using tweaks instead of serversleep  # https://modrinth.com/datapack/serversleep
+           serversleep  # https://modrinth.com/datapack/serversleep
+           
+
+      ## Optimizers like lithium, ferrite, servercore, etc are installed via modpack
+      ## not compatible 26.1 fabric yet: sophisticated-backpacks  # https://modrinth.com/mod/sophisticated-backpacks
+      ## needs tons of deps veinminer  # https://modrinth.com/datapack/veinminer
+      # gravestone-mod  # https://modrinth.com/mod/gravestone-mod
 
       # Datapacks from vanilla tweaks (comma separated IDs)
       # graves gravestone https://vanillatweaks.net/picker/datapacks/#kSIhW5
