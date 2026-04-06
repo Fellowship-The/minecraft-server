@@ -32,7 +32,7 @@ services:
       resources:
         reservations: # check with `docker stats`
           cpus: 8
-          memory: 20G
+          memory: 10G
     tty: true
     stdin_open: true
     # Always restart the container if it stops, unless it was stopped "manually or otherwise"
@@ -86,7 +86,7 @@ services:
       # classic fishing loot vanillatweaks.net/share#2e96zb
       VANILLATWEAKS_SHARECODE: kSIhW5,2e96zb
       # RAM parameters
-      MEMORY: "20G"
+      MEMORY: "10G"
       INIT_MEMORY: "10G"
       # Server settings
       DIFFICULTY: "hard"
