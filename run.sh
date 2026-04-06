@@ -14,4 +14,4 @@ set -x
 # `mc` is the service name in the docker-compose.yml file
 set -a
 source "$ROOT/private.env"
-docker compose -f $ROOT/docker-compose.yml up --build 
+docker compose -f $ROOT/docker-compose.yml up --build $@
