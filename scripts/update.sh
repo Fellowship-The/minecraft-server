@@ -16,4 +16,5 @@ else
 fi
 
 # Make sure server is running no matter what
-./scripts/run.sh
+# This script MUST exit after any git operations conclude
+./scripts/daemon.sh
