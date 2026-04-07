@@ -13,8 +13,9 @@ else
     echo "Updates pulled successfully."
     echo "Restarting now. $(date)"
     ./scripts/shutdown.sh
+    ./scripts/daemon.sh
 fi
 
 # Make sure server is running no matter what
 # This script MUST exit after any git operations conclude
-./scripts/daemon.sh
+## TODO TODO TODO ./scripts/daemon.sh
