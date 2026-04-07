@@ -43,7 +43,7 @@ services:
     environment:
       # Did you agree to the contract terms in the EULA? No choice!
       EULA: "TRUE"
-      MOTD: "Welcome to Felina's undefeatable Thinkpad :D"
+      MOTD: "Welcome to Felina's undefeatable Thinkpad 😸"
       OVERRIDE_SERVER_PROPERTIES: "true" # This .yml file is the source of truth, beware!
       #
       # TYPE: "PAPER"
