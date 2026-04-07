@@ -3,4 +3,5 @@ TIMEOUT=10  # Seconds
 PARENT="$(realpath "$(dirname "$0")"/../)"
 
 cd "$PARENT"
-watch -n1 "git pull && ./scripts/restart.sh || sleep $TIMEOUT"
+
+watch -n1 "./scripts/update.sh || sleep $TIMEOUT"
