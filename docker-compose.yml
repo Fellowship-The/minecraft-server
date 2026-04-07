@@ -42,6 +42,7 @@ services:
     environment:
       # Did you agree to the contract terms in the EULA? No choice!
       EULA: "TRUE"
+      MOTD: "Welcome to Felina's undefeatable Thinkpad."
       #
       # TYPE: "PAPER"
       # VERSION: "1.21.4"
