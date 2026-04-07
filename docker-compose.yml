@@ -40,6 +40,7 @@ services:
     volumes:
       # Be sure to change $MAP in the scripts too!
       - ./IMPERIUS_FELINUS_server_data:/data # Game data. Make sure to regularly backup!
+      - ./logs:/data/logs
     environment:
       # Did you agree to the contract terms in the EULA? No choice!
       EULA: "TRUE"
