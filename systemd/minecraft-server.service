@@ -1,0 +1,12 @@
+[Unit]
+Description=Starts the Minecraft server and restart it if it is shutdown.
+After=network.target
+
+[Service]
+ExecStart=%h/src/minecraft-server/scripts/restart.sh
+Restart=always
+RestartSec=10
+WorkingDirectory=~
+
+[Install]
+WantedBy=default.target

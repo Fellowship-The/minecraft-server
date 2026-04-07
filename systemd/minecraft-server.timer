@@ -1,0 +1,10 @@
+[Unit]
+Description=Restart Minecraft server if any changes detected to the git repo.
+After=network.target
+
+[Timer]
+OnActiveSec=1
+OnUnitActiveSec=1
+
+[Install]
+WantedBy=timers.target
