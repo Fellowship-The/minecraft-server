@@ -1,6 +1,6 @@
 #!/bin/sh
 ROOT="$(dirname $0)"
-BACKUP_SERVER_DATA="${BACKUP_SERVER_DATA-"$ROOT"/test_server_data}"
+BACKUP_SERVER_DATA="${BACKUP_SERVER_DATA-"$ROOT"/IMPERIUS_FELINUS}"
 
 set -x
 
