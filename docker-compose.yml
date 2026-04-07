@@ -63,33 +63,24 @@ services:
       # Check game version here: https://modrinth.com/modpack/ovop/versions
       # MODRINTH_MODPACK: ovop
       # MODRINTH_MODPACK_VERSION_TYPE: alpha
+      # Mod list from modrinth. Optimizers like lithium, ferrite, servercore, etc are installed via modpack
       MODRINTH_PROJECTS: |
-        # Tectonic - Terrain shaping brought to new heights, grander and more varied than ever before!
-        tectonic  # https://modrinth.com/datapack/tectonic
-        # Lithostitched Library mod with new configurability and compatibility enhancements for worldgen
-        lithostitched  # https://modrinth.com/mod/lithostitched
+        tectonic  # Tectonic - Terrain shaping brought to new heights, grander and more varied than ever before!  # https://modrinth.com/datapack/tectonic
+        lithostitched  # Lithostitched Library mod with new configurability and compatibility enhancements for worldgen # https://modrinth.com/mod/lithostitched
 
-        # ViaVersion allows newer clients to connect to older servers
-        viaversion  # https://modrinth.com/plugin/viaversion
-        # ViaBackwards: Allow older Java Edition clients to connect to newer servers.
-        viabackwards
-        # ViaFabric is a dependency of ViaBackwards and ViaVersion
-        viafabric:alpha
+        viaversion  # ViaVersion allows newer clients to connect to older servers # https://modrinth.com/plugin/viaversion
+        viabackwards  # ViaBackwards: Allow older Java Edition clients to connect to newer servers.
+        viafabric:alpha  # ViaFabric is a dependency of ViaBackwards and ViaVersion
+        
+        starter-kit  # 📦 Starter Kit gives new players configurable starting items # https://modrinth.com/mod/starter-kit
+        collective  # Collective is a dependency of starter-kit
 
-        # 📦 Starter Kit gives new players configurable starting items
-        starter-kit  # https://modrinth.com/mod/starter-kit
-        # Collective is a dependency of starter-kit
-        collective
+        
+        # natures-compass  # Nature's compass Allows you to locate biomes anywhere in the world with a friendly GUI.  # https://modrinth.com/mod/natures-compass
 
-        # Nature's compass Allows you to locate biomes anywhere in the world with a friendly GUI.
-        # natures-compass  # https://modrinth.com/mod/natures-compass
+        villager-names-serilum  # Villager Names 🧑‍🌾 Gives all villager entities a default or custom name to liven up the world.  # https://modrinth.com/mod/villager-names-serilum
 
-        # Villager Names 🧑‍🌾 Gives all villager entities a default or custom name to liven up the world.
-        villager-names-serilum  # https://modrinth.com/mod/villager-names-serilum
-
-        # The simplest multiplayer sleep mod/datapack. - Changes playersSleepingPercentage to 50%
-        serversleep  # https://modrinth.com/datapack/serversleep
-      # Optimizers like lithium, ferrite, servercore, etc are installed via modpack
+        serversleep  # The simplest multiplayer sleep mod/datapack. - Changes playersSleepingPercentage to 50%  # https://modrinth.com/datapack/serversleep
 
       # Datapacks from vanilla tweaks (comma separated IDs)
       # graves gravestone https://vanillatweaks.net/picker/datapacks/#kSIhW5
