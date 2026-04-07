@@ -3,6 +3,7 @@ backup/*
 # Only add the server.properties from your data/ directories
 *server_data/
 *server_data.bak/
+TODO*
 
 ####### BAD TO COMMIT THIS FILE
 private.env
