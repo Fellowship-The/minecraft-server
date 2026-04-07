@@ -38,6 +38,7 @@ services:
     # Always restart the container if it stops, unless it was stopped "manually or otherwise"
     restart: unless-stopped
     volumes:
+      # Be sure to change $MAP in the scripts too!
       - ./IMPERIUS_FELINUS_server_data:/data # Game data. Make sure to regularly backup!
     environment:
       # Did you agree to the contract terms in the EULA? No choice!

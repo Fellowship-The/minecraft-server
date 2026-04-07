@@ -2,6 +2,7 @@
 # Make sure the docker container name is correct by checking
 # `docker container ls`
 DEFAULT_DOCKER_CONTAINER_NAME=minecraft-server-mc-1
+MAP="${MAP:-IMPERIUS_FELINUS_server_data}"
 
 # Read the docker container name from an environment variable, or use the default.
 DOCKER_CONTAINER_NAME="${DOCKER_CONTAINER_NAME-$DEFAULT_DOCKER_CONTAINER_NAME}"
@@ -17,7 +18,7 @@ fi
 
 # RCON_PASSWORD="$(cat "$1")"
 PARENT="$(realpath "$(dirname "$0")"/../)"
-CONF="${1:-"$PARENT"/test_server_data/server.properties}"
+CONF="${1:-"$PARENT/$MAP/server.properties"}"
 echo $CONF
 RCON_PASSWORD="$(cat "$CONF" | grep rcon.password | sed 's/.*=//')"
 
