@@ -5,10 +5,6 @@ BACKUP_SERVER_DATA="${BACKUP_SERVER_DATA-"$ROOT/$MAP"}"
 
 set -x
 
-# Make a backup before starting the server. The compression can be slow. You
-# can safely cancel this command with CTRL-C.
-####### ./scripts/complicated-backup.sh "$BACKUP_SERVER_DATA"
-
 "$ROOT/scripts/backup.sh" "$BACKUP_SERVER_DATA"
 
 # Use docker compose to build the container and then run it.

@@ -1,2 +1,3 @@
 #!/usr/bin/bash
-exec ./run.sh --detach
+PARENT="$(realpath "$(dirname "$0")"/../)"
+exec "$PARENT/run.sh" --detach
