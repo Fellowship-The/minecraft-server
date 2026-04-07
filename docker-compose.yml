@@ -64,23 +64,27 @@ services:
       # MODRINTH_MODPACK: ovop
       # MODRINTH_MODPACK_VERSION_TYPE: alpha
       # Mod list from modrinth. Optimizers like lithium, ferrite, servercore, etc are installed via modpack
+      # Tectonic - Terrain shaping brought to new heights, grander and more varied than ever before!  # https://modrinth.com/datapack/tectonic
+      # Lithostitched Library mod with new configurability and compatibility enhancements for worldgen # https://modrinth.com/mod/lithostitched
+      # ViaVersion allows newer clients to connect to older servers # https://modrinth.com/plugin/viaversion
+      # ViaBackwards: Allow older Java Edition clients to connect to newer servers.
+      # ViaFabric is a dependency of ViaBackwards and ViaVersion
+      # 📦 Starter Kit gives new players configurable starting items # https://modrinth.com/mod/starter-kit
+      # Collective is a dependency of starter-kit
+      # Villager Names 🧑‍🌾 Gives all villager entities a default or custom name to liven up the world.  # https://modrinth.com/mod/villager-names-serilum
+      # The simplest multiplayer sleep mod/datapack. - Changes playersSleepingPercentage to 50%  # https://modrinth.com/datapack/serversleep
+      # Nature's compass Allows you to locate biomes anywhere in the world with a friendly GUI.  # https://modrinth.com/mod/natures-compass
       MODRINTH_PROJECTS: |
-        tectonic  # Tectonic - Terrain shaping brought to new heights, grander and more varied than ever before!  # https://modrinth.com/datapack/tectonic
-        lithostitched  # Lithostitched Library mod with new configurability and compatibility enhancements for worldgen # https://modrinth.com/mod/lithostitched
-
-        viaversion  # ViaVersion allows newer clients to connect to older servers # https://modrinth.com/plugin/viaversion
-        viabackwards  # ViaBackwards: Allow older Java Edition clients to connect to newer servers.
-        viafabric:alpha  # ViaFabric is a dependency of ViaBackwards and ViaVersion
-        
-        starter-kit  # 📦 Starter Kit gives new players configurable starting items # https://modrinth.com/mod/starter-kit
-        collective  # Collective is a dependency of starter-kit
-
-        
-        # natures-compass  # Nature's compass Allows you to locate biomes anywhere in the world with a friendly GUI.  # https://modrinth.com/mod/natures-compass
-
-        villager-names-serilum  # Villager Names 🧑‍🌾 Gives all villager entities a default or custom name to liven up the world.  # https://modrinth.com/mod/villager-names-serilum
-
-        serversleep  # The simplest multiplayer sleep mod/datapack. - Changes playersSleepingPercentage to 50%  # https://modrinth.com/datapack/serversleep
+        tectonic
+        lithostitched
+        viaversion
+        viabackwards
+        viafabric:alpha
+        starter-kit
+        collective
+        villager-names-serilum
+        serversleep
+        # natures-compass
 
       # Datapacks from vanilla tweaks (comma separated IDs)
       # graves gravestone https://vanillatweaks.net/picker/datapacks/#kSIhW5
