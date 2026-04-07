@@ -1,12 +1,23 @@
 [Unit]
 Description=Starts the Minecraft server and restart it if it is shutdown.
-After=network.target
+# Wants= pulls network-online.target into the startup transaction (weak dependency).
+# After= ensures this service only starts once the network is fully up.
+# Both are needed: Wants= triggers it, After= orders it.
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=%h/src/minecraft-server/scripts/restart.sh
-Restart=always
-RestartSec=10
-WorkingDirectory=~
+# Run once and shutdown. The systemd timer will restart it if needed.
+Type=oneshot
+# %h is the systemd specifier for the user's home directory.
+# Do NOT use ~ here - it does not expand in systemd unit files.
+WorkingDirectory=%h/src/minecraft-server
+# Runs git fetch and restarts server if any new git commits are pulled.
+ExecStart=%h/src/minecraft-server/scripts/update.sh
+# Explicit default: don't consider the service "active" after the script exits.
+RemainAfterExit=no
+# Prevent a stalled git fetch or run.sh from hanging the service forever.
+TimeoutStartSec=5min
 
 [Install]
 WantedBy=default.target

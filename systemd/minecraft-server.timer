@@ -1,10 +1,21 @@
 [Unit]
 Description=Restart Minecraft server if any changes detected to the git repo.
-After=network.target
+# Wants= pulls network-online.target into the startup transaction (weak dependency).
+# After= ensures this timer only starts once the network is fully up.
+# Both are needed: Wants= triggers it, After= orders it.
+Wants=network-online.target
+After=network-online.target
 
 [Timer]
-OnActiveSec=1
-OnUnitActiveSec=1
+# Fire once 5 seconds after boot to bootstrap OnUnitActiveSec.
+OnBootSec=5sec
+# Then re-fire 10 seconds after each completed service run.
+OnUnitActiveSec=10sec
+# Fallback: also fire on a fixed calendar schedule so NEXT is always populated,
+# even if the service has never run or has been failing.
+OnCalendar=*:*:0/10
+# Prevent duplicate runs if both triggers fire close together.
+AccuracySec=1sec
 
 [Install]
 WantedBy=timers.target
