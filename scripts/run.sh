@@ -1,10 +1,10 @@
 #!/bin/sh
+set -x
 MAP="${MAP:-IMPERIUS_FELINUS_server_data}"
 ROOT="$(dirname $(dirname $0))"
 BACKUP_SERVER_DATA="${BACKUP_SERVER_DATA-"$ROOT/$MAP"}"
 
 set -x
-
 # Backup data
 "$ROOT/scripts/backup.sh" "$BACKUP_SERVER_DATA"
 

@@ -2,6 +2,7 @@
 PARENT="$(realpath "$(dirname "$0")"/../)"
 cd "$PARENT"
 
+set -x
 git fetch origin
 # Compare the local branch (main) with its remote tracking branch (origin/main)
 if [ $(git rev-parse HEAD) = $(git rev-parse @{u}) ]; then
@@ -9,7 +10,8 @@ if [ $(git rev-parse HEAD) = $(git rev-parse @{u}) ]; then
     exit 1
 else
     git merge
-    echo "Updates pulled successfully, restarting now. $(date)"
+    echo "Updates pulled successfully."
+    echo "Restarting now. $(date)"
     ./scripts/restart.sh
 fi
 
