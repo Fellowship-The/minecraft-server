@@ -27,6 +27,12 @@ services:
     security_opt:
       - no-new-privileges:true
       - apparmor:docker-default
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "100"
+        compress: "true"
     privileged: false
     deploy:
       resources:
