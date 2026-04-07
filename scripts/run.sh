@@ -1,6 +1,6 @@
 #!/bin/sh
 MAP="${MAP:-IMPERIUS_FELINUS_server_data}"
-ROOT="$(dirname $0)"
+ROOT="$(dirname $(dirname $0))"
 BACKUP_SERVER_DATA="${BACKUP_SERVER_DATA-"$ROOT/$MAP"}"
 
 set -x
