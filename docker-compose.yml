@@ -88,11 +88,11 @@ services:
         villager-names-serilum
         serversleep
         # natures-compass
-      # Datapacks from vanilla tweaks (comma separated IDs)
+      # Datapacks from vanilla tweaks (comma separated IDs like kSIhW5,2e96zb)
       # graves gravestone https://vanillatweaks.net/picker/datapacks/#kSIhW5
       # multiplayer sleep https://vanillatweaks.net/picker/datapacks/#Uw9c10
       # classic fishing loot vanillatweaks.net/share#2e96zb
-      VANILLATWEAKS_SHARECODE: kSIhW5,2e96zb
+      VANILLATWEAKS_SHARECODE: ""
       # RAM parameters
       MEMORY: "10G"
       INIT_MEMORY: "10G"
