@@ -1,29 +1,29 @@
+---
 # By default, itzg/minecraft-server will run the selected minecraft server with
 # the specified data as the 'minecraft' user, not as root. This improves
 # security.
 
-##### The official documentation is very thorough:
-##### https://docker-minecraft-server.readthedocs.io/en/latest/
+# The official documentation is very thorough:
+# https://docker-minecraft-server.readthedocs.io/en/latest/
 
-######## Interacting with the server
-# Read https://github.com/itzg/docker-minecraft-server#interacting-with-the-server
-# for how to send commands to the server
+# Interacting with the server:
 #
 # Try:
 # docker exec -i minecraft_docker_server-mc-1 mc-send-to-console  say hi
-# docker attach minecraft_docker_server-mc-1 
-# 
+# docker attach minecraft_docker_server-mc-1
+#
 # minecraft_docker_server-mc-1  is the container name, which may be different
 # Get the name with: docker container ls
+#
+# Read https://github.com/itzg/docker-minecraft-server#interacting-with-the-server
+# for how to send commands to the server
 services:
   mc:
     image: itzg/minecraft-server:java25-graalvm
-    ports:
-      # Expose ports
+    ports: # Expose ports
       - 25565:25565 # Minecraft server port.
       - 25575:25575 # RCON port. Do not expose to the internet.
-      # - 8123:8123 # Dynmap port. WARNING: REMOVE THIS LINE IF DYNMAP IS NOT INSTALLED.
-    ####### Security settings
+    # Security settings
     security_opt:
       - no-new-privileges:true
       - apparmor:docker-default
@@ -38,47 +38,58 @@ services:
     # Always restart the container if it stops, unless it was stopped "manually or otherwise"
     restart: unless-stopped
     volumes:
-      - ./IMPERIUS_FELINUS:/data  # Game data. Make sure to regularly backup!
+      - ./IMPERIUS_FELINUS_server_data:/data # Game data. Make sure to regularly backup!
     environment:
       # Did you agree to the contract terms in the EULA? No choice!
       EULA: "TRUE"
+      #
       # TYPE: "PAPER"
       # VERSION: "1.21.4"
       # VERSION: "1.21.11"
-
       # TYPE: "VANILLA"
       # VERSION: "26.1"
-
       # TYPE: FORGE
       # VERSION: "26.1.1"  # Find on https://neoforged.net/
       # DO NOT AUTOMATE DOWNLOAD! Forge depends on ad revenue, download the file yourself. Avoid FORGE_VERSION.
       # FORGE_INSTALLER: "./forge-26.1.1-63.0.1-installer.jar"
+      #
       VERSION: "26.1"
       USE_AIKAR_FLAGS: "true" # More efficient garbage collection for better performance from aikar's flag generator
       USE_SIMD_FLAGS: "true"
       MAX_TICK_TIME: "-1" # Prevent watchdog killing server
       # Install mods using modrinth
-      MODPACK_PLATFORM: "MODRINTH"  # Modpacks are simple ways to install groups of mods: https://docker-minecraft-server.readthedocs.io/en/latest/types-and-platforms/mod-platforms/modrinth-modpacks/
+      MODPACK_PLATFORM: "MODRINTH" # Modpacks are simple ways to install groups of mods: https://docker-minecraft-server.readthedocs.io/en/latest/types-and-platforms/mod-platforms/modrinth-modpacks/
       MODRINTH_MODPACK: https://modrinth.com/modpack/ovop/version/yJNO4kJ1 # ovop with Minecraft 26.1 and Fabric loader, Overly Optimized https://modrinth.com/modpack/ovop
       # Check game version here: https://modrinth.com/modpack/ovop/versions
       # MODRINTH_MODPACK: ovop
       # MODRINTH_MODPACK_VERSION_TYPE: alpha
       MODRINTH_PROJECTS: |
-        lithostitched  # dep of tectonic
-        tectonic
+        # Tectonic - Terrain shaping brought to new heights, grander and more varied than ever before!
+        tectonic  # https://modrinth.com/datapack/tectonic
+        # Lithostitched Library mod with new configurability and compatibility enhancements for worldgen
+        lithostitched  # https://modrinth.com/mod/lithostitched
 
-        viafabric:alpha # dep of viaversion
+        # ViaVersion allows newer clients to connect to older servers
         viaversion  # https://modrinth.com/plugin/viaversion
+        # ViaBackwards: Allow older Java Edition clients to connect to newer servers.
+        viabackwards
+        # ViaFabric is a dependency of ViaBackwards and ViaVersion
+        viafabric:alpha
 
-        collective # dep of starter-kit
+        # 📦 Starter Kit gives new players configurable starting items
         starter-kit  # https://modrinth.com/mod/starter-kit
+        # Collective is a dependency of starter-kit
+        collective
 
+        # Nature's compass Allows you to locate biomes anywhere in the world with a friendly GUI.
         # natures-compass  # https://modrinth.com/mod/natures-compass
 
+        # Villager Names 🧑‍🌾 Gives all villager entities a default or custom name to liven up the world.
         villager-names-serilum  # https://modrinth.com/mod/villager-names-serilum
 
+        # The simplest multiplayer sleep mod/datapack. - Changes playersSleepingPercentage to 50%
         serversleep  # https://modrinth.com/datapack/serversleep
-      ## Optimizers like lithium, ferrite, servercore, etc are installed via modpack
+      # Optimizers like lithium, ferrite, servercore, etc are installed via modpack
 
       # Datapacks from vanilla tweaks (comma separated IDs)
       # graves gravestone https://vanillatweaks.net/picker/datapacks/#kSIhW5
