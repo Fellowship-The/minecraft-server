@@ -94,13 +94,14 @@ services:
         collective
         villager-names-serilum
         serversleep
+        coordinate-bar-dp
         # natures-compass
       # Datapacks from vanilla tweaks (comma separated IDs like kSIhW5,2e96zb)
       # graves gravestone https://vanillatweaks.net/picker/datapacks/#kSIhW5
       # multiplayer sleep https://vanillatweaks.net/picker/datapacks/#Uw9c10
       # classic fishing loot vanillatweaks.net/share#2e96zb
       # informative coordinates HUD vanillatweaks.net/share#GnIBqb
-      VANILLATWEAKS_SHARECODE: "GnIBqb"
+      # VANILLATWEAKS_SHARECODE: "GnIBqb"
       # RAM parameters
       MEMORY: "10G"
       INIT_MEMORY: "10G"
